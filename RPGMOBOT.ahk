@@ -22,5 +22,24 @@ SetKeyDelay ,50 ,150
 	Controlclick ,x669 y472,ahk_exe nw.exe
 	sleep 1750
 	WinMinimize ,ahk_exe nw.exe
-	
+Return
+
+^n::
+	;ControlSend ,,a,ahk_exe nw.exe
+	IfWinNotActive,ahk_exe nw.exe
+		WinActivate ,ahk_exe nw.exe
+	WinWaitActive,ahk_exe nw.exe
+	Controlclick ,x363 y193,ahk_exe nw.exe
+	sleep 1750
+	Controlclick ,x365 y230,ahk_exe nw.exe
+	sleep 1750
+	ControlSend ,,c,ahk_exe nw.exe
+	sleep 750
+	Controlclick ,x843 y218,ahk_exe nw.exe
+	sleep 500
+	Controlclick ,x785 y450,ahk_exe nw.exe
+	sleep 1750
+	Controlclick ,x702 y412,ahk_exe nw.exe
+	sleep 1750
+	WinMinimize ,ahk_exe nw.exe
 Return
