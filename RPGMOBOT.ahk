@@ -2,7 +2,7 @@
  #Warn  ; Enable warnings to assist with detecting common errors.
 ;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetKeyDelay ,50 ,100
+SetKeyDelay ,50 ,150
 detectHiddenWindows, on
 CoordMode, Mouse, Client
 CoordMode, Pixel, Client
@@ -18,7 +18,7 @@ Return
 
 F2::Pause
 F6::WinShow, ahk_id %id%
-
+F7::WinHide, ahk_id %id%
 ^d::
 	
 	;ControlSend ,,a,ahk_exe nw.exe
@@ -42,11 +42,12 @@ Return
 
 F4::
 	Pause
+	IfWinNotActive, ahk_id %id%
+		WinActivate , ahk_id %id%
+	WinWaitActive, ahk_id %id%
 	Loop
 	{
-		IfWinNotActive, ahk_id %id%
-			WinActivate , ahk_id %id%
-		WinWaitActive, ahk_id %id%
+
 		WinHide, ahk_id %id%
 		;PixelGetColor,Errcolor, 486, 313
 		;if (Errcolor = 0xFFFFFF)
@@ -61,12 +62,12 @@ F4::
 		Controlclick ,x354 y160,ahk_id %control%
 		sleep 1750
 		Controlclick ,x354 y200,ahk_id %control%
-		sleep 2000
-		ControlSend ,,c,ahk_id %control%
+		sleep 1750
+		Controlclick ,x725 y470,ahk_id %control%
 		sleep 1500
-		ControlSend ,,d,ahk_id %control%
+		Controlclick ,x830 y185,ahk_id %control%
 		sleep 500
-		Controlclick ,x737 y400,ahk_id %control%
+		Controlclick ,x785 y420,ahk_id %control%
 		sleep 1750
 		Controlclick ,x694 y380,ahk_id %control%
 		sleep 1750
