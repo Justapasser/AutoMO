@@ -48,7 +48,7 @@ F4::
 	Loop
 	{
 
-		WinHide, ahk_id %id%
+		;WinHide, ahk_id %id%
 		;PixelGetColor,Errcolor, 486, 313
 		;if (Errcolor = 0xFFFFFF)
 		;{
@@ -59,17 +59,17 @@ F4::
 		;		Pause
 		;	}
 		;}
-		Controlclick ,x354 y160,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x354 y160 NA
 		sleep 1750
-		Controlclick ,x354 y200,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x354 y200 NA
 		sleep 1750
-		Controlclick ,x725 y470,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x725 y470 NA
 		sleep 1500
-		Controlclick ,x830 y185,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x830 y185 NA
 		sleep 500
-		Controlclick ,x785 y420,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x785 y420 NA
 		sleep 1750
-		Controlclick ,x694 y380,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x694 y380 NA
 		sleep 1750
 		;WinShow
 		;;WinMinimize ,ahk_exe nw.exe
