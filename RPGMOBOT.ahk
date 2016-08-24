@@ -2,7 +2,7 @@
  #Warn  ; Enable warnings to assist with detecting common errors.
 ;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetKeyDelay ,50 ,100
+SetKeyDelay ,50 ,150
 detectHiddenWindows, on
 CoordMode, Mouse, Client
 CoordMode, Pixel, Client
@@ -13,11 +13,14 @@ CoordMode, Pixel, Client
 F3::
     MouseGetPos, , , id, control, 2
 	MsgBox , get id %id% and control %control%
+	WinSet AlwaysOnTop, On, ahk_id %id%
 Return
 
 F2::Pause
-
+F6::WinShow, ahk_id %id%
+F7::WinHide, ahk_id %id%
 ^d::
+	
 	;ControlSend ,,a,ahk_exe nw.exe
 	IfWinNotActive,ahk_exe nw.exe
 		WinActivate ,ahk_exe nw.exe
@@ -39,32 +42,37 @@ Return
 
 F4::
 	Pause
+	IfWinNotActive, ahk_id %id%
+		WinActivate , ahk_id %id%
+	WinWaitActive, ahk_id %id%
 	Loop
 	{
-	
-		IfWinNotActive,ahk_exe nw.exe
-			WinActivate ,ahk_exe nw.exe
-		WinWaitActive,ahk_exe nw.exe
-		PixelGetColor,Errcolor, 486, 313
-		if (Errcolor = 0xFFFFFF)
-		{
-			PixelGetColor, Errcolor, 490, 310
-			if(Errcolor = 0xFFFFFF)
-				Pause
-		}
-		Controlclick ,x354 y160,ahk_id %control%
+
+		;WinHide, ahk_id %id%
+		;PixelGetColor,Errcolor, 486, 313
+		;if (Errcolor = 0xFFFFFF)
+		;{
+		;	PixelGetColor, Errcolor, 490, 310
+		;	if(Errcolor = 0xFFFFFF)
+		;	{
+		;		WinShow
+		;		Pause
+		;	}
+		;}
+		Controlclick ,,ahk_id %control%,,,,x354 y160 NA
 		sleep 1750
-		Controlclick ,x354 y200,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x354 y200 NA
 		sleep 1750
-		ControlSend ,,c,ahk_id %control%
-		sleep 1250
-		ControlSend ,,d,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x725 y470 NA
+		sleep 1500
+		Controlclick ,,ahk_id %control%,,,,x830 y185 NA
 		sleep 500
-		Controlclick ,x737 y400,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x785 y420 NA
 		sleep 1750
-		Controlclick ,x694 y380,ahk_id %control%
+		Controlclick ,,ahk_id %control%,,,,x694 y380 NA
 		sleep 1750
-		WinMinimize ,ahk_exe nw.exe
+		;WinShow
+		;;WinMinimize ,ahk_exe nw.exe
 		sleep 120000
 	}
 Return
